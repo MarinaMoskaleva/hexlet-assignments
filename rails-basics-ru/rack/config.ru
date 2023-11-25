@@ -2,4 +2,4 @@
 
 require_relative 'lib/app'
 
-Rack::Handler::Thin.run App.init, Port: 3001, Host: '0.0.0.0'
+Rack::Handler::Thin.run App.init, Port: 3000, Host: '0.0.0.0'

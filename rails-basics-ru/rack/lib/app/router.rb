@@ -5,10 +5,13 @@ require 'rack'
 class Router
   def call(env)
     request = Rack::Request.new(env)
-    if ["/about", "/"].include? request.path
-      [200, {}, []]
+    case request.path
+    when "/"
+      [200, {'Content-Type' => 'text/html'}, ["Hello, World!"]]
+    when "/about"
+      [200, {'Content-Type' => 'text/html'}, ["About page"]]
     else 
-      [404, {}, []]
+      [404, {'Content-Type' => 'text/html'}, ["404 Not Found"]]
     end
   end
 end

@@ -9,21 +9,10 @@ class Signature
   end
 
   def call(env)
-    status, headers, _ = @app.call(env)
-    request = Rack::Request.new(env)
-    case request.path
-    when "/"
-      body = String.new("Hello, World!")
-      body_hash = Digest::SHA256.hexdigest body
-      body << body_hash
-      [status, headers, [body]]
-    when "/about"
-      body = String.new("About page")
-      body_hash = Digest::SHA256.hexdigest body
-      body << body_hash
-      [status, headers, [body]]
-    else
-      [status, headers, ["404 Not Found"]]
+    status, headers, body = @app.call(env)
+    if status == 200
+      body.push(Digest::SHA256.hexdigest(body.join))
     end
+    [status, headers, body]
   end
 end
