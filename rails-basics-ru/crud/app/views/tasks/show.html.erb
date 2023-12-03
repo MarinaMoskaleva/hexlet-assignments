@@ -1,0 +1,11 @@
+<h1>Task</h1>
+
+<h2><%= @task.name%></h2>
+<p><%= @task.description %></p>
+<p><b>Creator:</b> <%= @task.creator %> <b>Performer:</b> <%= @task.performer %></p>
+<p><b>Status:</b> <%= @task.status %></p>
+<p><small>Created at <%= @task.created_at.strftime('%H:%M %d.%m.%Y') %></small></p>
+
+<%= link_to 'Edit task', edit_task_path(@task) %>
+<%= link_to 'Delete task', task_path(@task), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' } %>
+

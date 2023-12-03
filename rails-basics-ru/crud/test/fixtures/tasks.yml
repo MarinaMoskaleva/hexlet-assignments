@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: tasks
+#
+#  id          :integer          not null, primary key
+#  completed   :boolean
+#  creator     :string
+#  description :text
+#  name        :string
+#  performer   :string
+#  status      :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  name: Task 1
+  description: Tasks description
+  status: new
+  creator: Jane Doy
+  performer: John Doy
+  completed: false
+
+two:
+  name: MyString
+  description: MyText
+  status: MyString
+  creator: MyString
+  performer: MyString
+  completed: false
