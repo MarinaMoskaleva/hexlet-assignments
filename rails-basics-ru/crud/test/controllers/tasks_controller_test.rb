@@ -15,7 +15,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     }
   end
 
-  test 'should get index' do
+  test 'should open index' do
     get tasks_url
     assert_response :success
   end
