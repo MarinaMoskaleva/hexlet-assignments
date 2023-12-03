@@ -41,6 +41,7 @@ end
 group :test do
   gem 'faker'
   gem 'minitest-power_assert'
+  gem 'annotate'
 end
 
 gem 'rexml', '~> 3.2', '>= 3.2.4'
