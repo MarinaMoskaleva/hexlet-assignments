@@ -5,9 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails', '~> 7.0'
 
-# BEGIN
-
-# END
+gem 'slim-rails'
 
 gem 'jbuilder'
 gem 'puma'
@@ -49,6 +47,3 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-gem 'html2slim'
-gem 'slim-rails'
