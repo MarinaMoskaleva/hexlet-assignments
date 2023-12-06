@@ -1,0 +1,15 @@
+h1
+  | Posts
+- @posts.each do |post|
+  h2
+    = link_to post.title, post_path(post)
+  p
+  b
+    | Summary: 
+  = post.summary
+  
+    small
+      | Created at 
+      = post.created_at.strftime('%H:%M %d:%m:%Y')
+  p    
+= link_to 'New post', new_post_path

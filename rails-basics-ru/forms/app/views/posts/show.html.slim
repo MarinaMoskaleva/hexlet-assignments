@@ -1,0 +1,16 @@
+h1
+  | Post
+h2
+  = @post.title
+p
+  | Summary: 
+  = @post.summary
+p
+  = @post.body
+p
+  small
+    | Created at 
+    = @post.created_at.strftime('%H:%M %d.%m.%Y')
+= link_to 'Edit post', edit_post_path(@post) 
+p
+= link_to 'Delete post', post_path(@post), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }
