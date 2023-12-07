@@ -1,0 +1,18 @@
+h1
+  | Task
+h2
+  = @task.name
+p
+  = @task.description
+p
+  = @task.user.name
+p
+  = @task.status.name
+p
+  small
+    | Created at 
+    = @task.created_at.strftime('%H:%M %d.%m.%Y')
+= link_to 'Edit task', edit_task_path(@task) 
+p
+= link_to 'Delete task', task_path(@task), data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }
+
