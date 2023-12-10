@@ -1,0 +1,33 @@
+- content_for :title do
+  = @post.title
+p
+  strong.me-2 Body: 
+  = @post.body
+
+p
+  | Comments 
+
+- @comments.each do |com|
+  p
+    = com.body
+  = link_to 'Edit', edit_comment_path(com)
+  br
+  = link_to 'Destroy', comment_path(com), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'link-danger'
+  
+  hr
+
+- new_comment = @post.post_comments.build
+h3
+  | New comment
+== render 'posts/comments/form', comment: new_comment, url: post_comments_path(@post)
+- if new_comment.errors.any?
+  h4
+    | There were some errors with your comment:
+  ul
+    - new_comment.errors.full_messages.each do |message|
+      li= message
+
+hr
+.d-flex
+  = link_to 'Edit', edit_post_path(@post), class: 'btn btn-outline-primary me-2'
+  = link_to 'Back', :back, class: 'btn btn-outline-primary'
