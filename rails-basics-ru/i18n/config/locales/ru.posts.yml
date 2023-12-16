@@ -1,0 +1,37 @@
+ru:
+  posts:
+    comment_count:
+      zero: "нет комментариев"
+      one: "1 комментарий"
+      few: "%{count} комментария"
+      many: "%{count} комментариев"
+      other: "%{count} комментариев"
+    index:
+      show: Показать
+      edit: Редактировать
+      destroy: Удалять
+      new_post: Новый пост
+      table_title: Посты
+    edit:
+      title: Название
+    create:
+      success: Пост создан.
+    update:
+      success: Пост обновлен.
+    show:
+      body: Текст
+      comments: Комментарии
+    destroy:
+      success: Пост удален.
+    new:
+      title: Новый пост
+
+    comments:
+      edit:
+        title: Изменить комментарий
+
+      create:
+        success: Комментарий создан.
+
+      update:
+        success: Комментарий обновлен.

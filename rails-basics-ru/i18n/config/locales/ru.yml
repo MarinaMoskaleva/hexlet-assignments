@@ -1,0 +1,16 @@
+ru:
+  show: Показать
+  edit: Редактировать
+  destroy: Удалить
+  destroy_confirmation: Вы уверены?
+  back: Домой
+  page_title: "Посты"
+  hexlet_title: "© Хекслет, %{year}"
+  home_page: Домой
+  home_title: Домашняя страница
+  posts_page: Посты
+  layouts:
+    shared:
+      nav:
+        hexlet_logo: en
+  
