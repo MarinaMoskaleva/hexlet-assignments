@@ -33,8 +33,6 @@ class Hacker
       request = Net::HTTP::Post.new uri
       request.body = URI.encode_www_form(params)
       request['Cookie'] = cookie
-      
-
       response = http.request request
 
       response.code == '302'
