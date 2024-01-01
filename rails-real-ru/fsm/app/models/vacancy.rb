@@ -8,11 +8,11 @@ class Vacancy < ApplicationRecord
     state :published, :archived
 
     event :publish do
-      transitions from: :on_moderate, to: :published
+      transitions from: [:on_moderate, :archived], to: :published
     end
 
     event :archive do
-      transitions from: [:published, :on_moderate], to: :archived
+      transitions from: [:on_moderate, :published], to: :archived
     end
   end
 
