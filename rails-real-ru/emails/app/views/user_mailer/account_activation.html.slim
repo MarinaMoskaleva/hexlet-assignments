@@ -1,0 +1,4 @@
+body
+  h1 Hello, #{@user.name}!
+  p Welcome to our test site. To complete registration follow the link below
+  a href="http://localhost:3000/user/confirm?confirmation_token=#{@user.confirmation_token}" Complete registration
