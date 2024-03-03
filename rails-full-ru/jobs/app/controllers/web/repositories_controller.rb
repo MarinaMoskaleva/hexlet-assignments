@@ -17,6 +17,7 @@ class Web::RepositoriesController < Web::ApplicationController
     @repository = Repository.new(permitted_params)
 
     if @repository.save
+      RepositoryLoaderJob.perform_now(@repository)
       redirect_to @repository, notice: t('success')
     else
       flash[:notice] = t('fail')
@@ -27,6 +28,7 @@ class Web::RepositoriesController < Web::ApplicationController
   def update
     @repository = Repository.find params[:id]
     RepositoryLoaderJob.perform_now(@repository)
+
     redirect_to repositories_path, notice: t('success')
   end
 
