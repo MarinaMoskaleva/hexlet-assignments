@@ -4,24 +4,24 @@ require 'test_helper'
 
 class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   test 'should create repo' do
-    repository_url = "https://github.com/example/example-repo"
-    response_body = load_fixture('files/response.json')
-    stub_request(:get, "https://api.github.com/repos/example/example-repo").
-      with(
-        headers: {
-        'Accept'=>'application/vnd.github.v3+json',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'Content-Type'=>'application/json',
-        'User-Agent'=>'Octokit Ruby Gem 8.1.0'
-        }).
-      to_return(status: 200, body: response_body, headers: {})
-    
-    post repositories_path, params: {repository: {link: repository_url} }
-    assert_response :success
-    assert_equal "application/json; charset=utf-8", @response.content_type
+    attrs = {
+      link: 'https://github.com/railsware/js-routes'
+    }
+    response = load_fixture('files/response.json')
 
-    json_response = JSON.parse(@response.body)
-    assert_equal 0, json_response['watchers_count']
-    assert_equal "default_branch", json_response['default_branch']
+    stub_request(:get, 'https://api.github.com/repos/railsware/js-routes')
+      .to_return(
+        status: 200,
+        body: response,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    post repositories_url, params: { repository: attrs }
+
+    repository = Repository.find_by attrs
+
+    assert { repository }
+    assert { repository.description.present? }
+    assert_redirected_to repository_url(repository)
   end
 end
